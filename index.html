@@ -1,172 +1,154 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Caccia al tesoro - Magia!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caccia al tesoro - Magia!</title>
 
-<!-- Font Harry Potter (locale) -->
-<style>
-@font-face {
-  font-family: 'HarryP';
-  src: url('harry-p-font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-</style>
+  <!-- Font Harry Potter (locale) -->
+  <style>
+    @font-face {
+      font-family: 'HarryP';
+      src: url('harry-p-font.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-<style>
-  body {
-    font-family: 'HarryP', serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-image: url("malandrino.jpg"); /* Mappa del Malandrino */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    color: #2d1e0f;
-  }
+    body {
+      font-family: 'HarryP', serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-image: url("malandrino.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #2d1e0f;
+    }
 
-  h2 {
-    font-size: 3rem;
-    margin-top: 30px;
-    text-shadow: 2px 2px 4px #fff;
-  }
+    h2 {
+      font-size: 3rem;
+      margin-top: 30px;
+      text-shadow: 2px 2px 4px #fff;
+    }
 
-  .image-container {
-    position: relative;
-    display: inline-block;
-    max-width: 90vw;
-    margin-top: 20px;
-  }
+    .image-container {
+      position: relative;
+      display: inline-block;
+      max-width: 90vw;
+      margin-top: 20px;
+    }
 
-  #partialImage {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
+    #partialImage {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
 
-  #fullImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 2s ease;
-    z-index: 2;
-    animation: none;
-  }
-
-  #fullImage.visible {
-    opacity: 1;
-    visibility: visible;
-    animation: pixelMagic 2.2s ease-out forwards;
-  }
-
-  @keyframes pixelMagic {
-    0% {
+    #fullImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
       opacity: 0;
-      transform: scale(0.8) rotate(10deg);
-      filter: brightness(3) blur(8px);
-      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      visibility: hidden;
+      transition: opacity 2s ease;
+      z-index: 2;
+      animation: none;
     }
-    50% {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-      transform: scale(1.05) rotate(-5deg);
-      filter: brightness(1.8) blur(3px);
-    }
-    100% {
+
+    #fullImage.visible {
       opacity: 1;
-      transform: scale(1) rotate(0deg);
-      filter: brightness(1) blur(0);
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      visibility: visible;
+      animation: pixelMagic 2.2s ease-out forwards;
     }
-  }
 
-  input[type="text"] {
-    padding: 10px;
-    font-size: 1.1rem;
-    width: 80%;
-    max-width: 300px;
-    border: 2px solid #5c4434;
-    border-radius: 6px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-family: serif;
-  }
+    @keyframes pixelMagic {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(10deg);
+        filter: brightness(3) blur(8px);
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      }
+      50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transform: scale(1.05) rotate(-5deg);
+        filter: brightness(1.8) blur(3px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1) blur(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
 
-  button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #5c4434;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'HarryP', serif;
-  }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1.1rem;
+      width: 80%;
+      max-width: 300px;
+      border: 2px solid #5c4434;
+      border-radius: 6px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: serif;
+    }
 
-  button:hover {
-    background-color: #7a5c43;
-  }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      background-color: #5c4434;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'HarryP', serif;
+    }
 
-  #feedback {
-    font-weight: bold;
-    margin-top: 15px;
-    min-height: 1.5em;
-    font-size: 2rem;
-    color: #1d0d00;
-    text-shadow: 1px 1px 2px #fff;
-  }
-</style>
+    button:hover {
+      background-color: #7a5c43;
+    }
+
+    #feedback {
+      font-weight: bold;
+      margin-top: 15px;
+      min-height: 1.5em;
+      font-size: 2rem;
+      color: #1d0d00;
+      text-shadow: 1px 1px 2px #fff;
+    }
+  </style>
 </head>
 <body>
 
-<h2>“Solo colui che conosce la via dei Malandrini
-potrà svelare il sentiero celato tra i confini.
-Nel silenzio sussurra le parole segrete,
-e la Mappa risponderà, svelando le mete.” </h2>
+  <h2>“Solo colui che conosce la via dei Malandrini<br>
+  potrà svelare il sentiero celato tra i confini.<br>
+  Nel silenzio sussurra le parole segrete,<br>
+  e la Mappa risponderà, svelando le mete.”</h2>
 
-<div class="image-container">
-  <img id="partialImage" src="immagine_parziale.jpg" alt="Immagine parziale" />
-  <img id="fullImage" src="immagine_completa.jpg" alt="Immagine completa" />
-</div>
+  <div class="image-container">
+    <img id="partialImage" src="immagine_parziale.jpg" alt="Immagine parziale" />
+    <img id="fullImage" src="immagine_completa.jpg" alt="Immagine completa" />
+  </div>
 
-<br>
+  <br>
 
-<input type="text" id="answer" placeholder="Scrivi qui la risposta magica" autocomplete="off" />
-<br>
-<button onclick="checkAnswer()">Verifica</button>
+  <input type="text" id="answer" placeholder="Scrivi qui la risposta magica" autocomplete="off" />
+  <br>
+  <button onclick="checkAnswer()">Verifica</button>
 
-<p id="feedback"></p>
+  <p id="feedback"></p>
 
-<!-- Suono magico -->
-<audio id="magicSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3b075929c3.mp3" preload="auto"></audio>
+  <!-- Suono magico -->
+  <audio id="magicSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3b075929c3.mp3" preload="auto"></audio>
 
-<script>
-  function checkAnswer() {
-    const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-    const correctAnswer = 'giuro';
+  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      const correctAnswer = 'giuro'; // minuscolo per confronto coerente
 
-    if (userAnswer === correctAnswer) {
-      const fullImg = document.getElementById('fullImage');
-      fullImg.classList.add('visible');
-
-      document.getElementById('feedback').textContent = 'Incanto riuscito! Hai sbloccato l’immagine magica.';
-
-      const sound = document.getElementById('magicSound');
-      sound.currentTime = 0;
-      sound.play();
-    } else {
-      document.getElementById('feedback').textContent = 'Non funziona... forse non è la parola giusta.';
-    }
-  }
-</script>
-
-</body>
-</html>
+      if (userAnswer
