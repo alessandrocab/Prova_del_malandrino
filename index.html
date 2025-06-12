@@ -149,6 +149,22 @@
   <script>
     function checkAnswer() {
       const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-      const correctAnswer = 'giuro'; // minuscolo per confronto coerente
+      const correctAnswer = 'Giuro solennemente di non avere buone intenzioni';
 
-      if (userAnswer
+      const feedback = document.getElementById('feedback');
+      const fullImage = document.getElementById('fullImage');
+      const sound = document.getElementById('magicSound');
+
+      if (userAnswer === correctAnswer) {
+        feedback.textContent = '✅ Bravo! Hai svelato il segreto!';
+        fullImage.classList.add('visible');
+        sound.play();
+      } else {
+        feedback.textContent = '❌ Non è corretto. Riprova.';
+        fullImage.classList.remove('visible');
+      }
+    }
+  </script>
+
+</body>
+</html>
