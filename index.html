@@ -127,7 +127,10 @@
 </head>
 <body>
 
-<h2>Pronuncia la parola magica...</h2>
+<h2>“Solo colui che conosce la via dei Malandrini
+potrà svelare il sentiero celato tra i confini.
+Nel silenzio sussurra le parole segrete,
+e la Mappa risponderà, svelando le mete.” </h2>
 
 <div class="image-container">
   <img id="partialImage" src="immagine_parziale.jpg" alt="Immagine parziale" />
@@ -148,7 +151,7 @@
 <script>
   function checkAnswer() {
     const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-    const correctAnswer = 'vecchia miniera';
+    const correctAnswer = 'Giuro solennemente di non avere buone intenzioni';
 
     if (userAnswer === correctAnswer) {
       const fullImg = document.getElementById('fullImage');
