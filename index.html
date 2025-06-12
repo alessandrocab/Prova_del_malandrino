@@ -148,8 +148,16 @@
 
   <script>
     function checkAnswer() {
-      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-      const correctAnswer = 'Giuro solennemente di non avere buone intenzioni';
+      let userAnswer = document.getElementById('answer').value;
+
+      // Normalizza la risposta utente:
+      userAnswer = userAnswer
+        .toLowerCase()
+        .trim()
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '') // rimuove punteggiatura
+        .replace(/\s{2,}/g, ' '); // riduce spazi multipli a uno solo
+
+      const correctAnswer = 'giuro solennemente di non avere buone intenzioni';
 
       const feedback = document.getElementById('feedback');
       const fullImage = document.getElementById('fullImage');
